@@ -28,13 +28,15 @@
     }, 500);
 </script>
 
-<style>
+<style lang="scss">
     .logo {
         text-align: center;
     }
+
     .container {
         padding: 10px 0;
     }
+
     nav {
         width: 500px;
         display: flex;

@@ -84,6 +84,7 @@
         width: 450px;
         margin: 0 auto;
     }
+
     .box-card {
         width: 480px;
         margin: 20px auto;

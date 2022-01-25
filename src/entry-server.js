@@ -44,7 +44,7 @@ export async function render(url, manifest) {
     const app = createSSRApp(App);
 
     app.use(router).use(store, storeKey);
-    router.push(url);
+    await router.push(url);
 
     try {
         await router.isReady();
@@ -64,7 +64,7 @@ export async function render(url, manifest) {
                     store,
                     route: to
                 };
-                if (isPromise(asyncData) === false) {
+                if (!isPromise(asyncData)) {
                     const result = asyncData(config);
                     return Promise.resolve(result);
                 }
