@@ -1,5 +1,4 @@
 import { renderToString } from "@vue/server-renderer";
-import formatter from "html-formatter";
 import { createSSRApp } from "vue";
 import { sync } from "vuex-router-sync";
 import App from "./app.vue";
@@ -75,7 +74,6 @@ export async function render(url, manifest) {
         await Promise.all(asyncDataFuncs);
         const ctx = {};
         let html = await renderToString(app, ctx);
-        html = formatter.render(html);
         console.log(html);
         const preloadLinks = renderPreloadLinks(ctx.modules, manifest);
         const state = JSON.stringify(store.state);

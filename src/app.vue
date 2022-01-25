@@ -2,7 +2,7 @@
     <div class="logo">
         <img alt="Vue logo" src="./assets/img/logo.png" />
         <h3>Vue3.0 Typescript Eslint SSR Starter</h3>
-        <p>x {{ time }}</p>
+        <p>{{ time }}</p>
     </div>
     <nav>
         <router-link :to="{ name: 'index' }">Go to Home</router-link>

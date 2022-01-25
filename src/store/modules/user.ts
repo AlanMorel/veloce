@@ -1,10 +1,12 @@
 import { Module } from "vuex";
 import { IRootState } from "..";
+
 interface IUser {
     name: string;
     userId: string;
     token: string;
 }
+
 export interface IUserState {
     userInfo: IUser;
 }

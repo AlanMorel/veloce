@@ -1,6 +1,7 @@
 import { getFruitList, IFruitItem } from "@/api/market";
 import { Module } from "vuex";
 import { IRootState } from "..";
+
 export interface IMarketState {
     fruitList: IFruitItem[];
 }

@@ -4,7 +4,7 @@
         <div v-if="isLogin" class="info">
             <el-card class="box-card">
                 <div>User logged in</div>
-                <div>UserName: {{ userInfo.name }}</div>
+                <div>Username: {{ userInfo.name }}</div>
             </el-card>
         </div>
         <el-form v-else class="form">

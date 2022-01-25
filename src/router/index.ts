@@ -9,7 +9,7 @@ export default function () {
             {
                 path: "/",
                 name: "index",
-                component: () => import("@/views")
+                component: () => import("@/views/index.vue")
             },
             {
                 path: "/user",
@@ -19,7 +19,7 @@ export default function () {
             {
                 path: "/market",
                 name: "market",
-                component: () => import("@/views/market")
+                component: () => import("@/views/market.vue")
             }
         ]
     });
