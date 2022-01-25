@@ -2,19 +2,19 @@ import { renderToString } from "@vue/server-renderer";
 import { createSSRApp } from "vue";
 import { sync } from "vuex-router-sync";
 import App from "./app.vue";
-import createRouter from "./router/";
-import createStore, { storeKey } from "./store/";
+import createRouter from "./router";
+import createStore, { storeKey } from "./store";
 import { isPromise } from "./utils";
 
-function renderPreloadLinks(modules, manifest) {
+function renderPreloadLinks(modules: any, manifest: any) {
     let links = "";
     const seen = new Set();
 
-    modules.forEach(id => {
+    modules.forEach((id: any) => {
         const files = manifest[id];
 
         if (files) {
-            files.forEach(file => {
+            files.forEach((file: any) => {
                 if (!seen.has(file)) {
                     seen.add(file);
                     links += renderPreloadLink(file);
@@ -25,7 +25,7 @@ function renderPreloadLinks(modules, manifest) {
     return links;
 }
 
-function renderPreloadLink(file) {
+function renderPreloadLink(file: any) {
     if (file.endsWith(".js")) {
         return `<link rel="modulepreload" crossorigin href="${file}">`;
     } else if (file.endsWith(".css")) {
@@ -35,7 +35,7 @@ function renderPreloadLink(file) {
     }
 }
 
-export async function render(url, manifest) {
+export async function render(url: any, manifest: any) {
     const router = createRouter();
     const store = createStore();
 
@@ -53,8 +53,8 @@ export async function render(url, manifest) {
         if (to.value.matched.length === 0) {
             return "";
         }
-        const matchedComponents = [];
-        matchedRoute.map(route => {
+        const matchedComponents: any[] = [];
+        matchedRoute.forEach(route => {
             matchedComponents.push(...Object.values(route.components));
         });
         const asyncDataFuncs = matchedComponents.map(component => {
@@ -72,7 +72,7 @@ export async function render(url, manifest) {
             }
         });
         await Promise.all(asyncDataFuncs);
-        const ctx = {};
+        const ctx: any = {};
         let html = await renderToString(app, ctx);
         console.log(html);
         const preloadLinks = renderPreloadLinks(ctx.modules, manifest);
