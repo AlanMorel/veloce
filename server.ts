@@ -77,7 +77,7 @@ async function createServer(root = process.cwd(), isProd = isProduction) {
 
             const html = template
                 .replace(`<!--preload-links-->`, links)
-                .replace(`'<vuex-state>'`, state)
+                .replace(`'<pinia-state>'`, state)
                 .replace(`<!--app-html-->`, appHtml);
 
             res.status(200).set({ "Content-Type": "text/html" }).end(html);

@@ -3,25 +3,27 @@
 - Lightning-fast cold server start
 - Instant hot module replacement (HMR) and dev SSR
 - True on-demand compilation
-- Use `vue3 vite2.0 typescript eslint SSR vuex vue-router element-plus scss`
+- Use `vue3 vite2.0 typescript eslint SSR pinia vue-router element-plus scss`
 
 # Getting Started
+
 - dev
-```bash 
+
+```bash
 npm i
 npm run dev
 ```
 
 - preview
-```bash 
+
+```bash
 npm i
 npm run preview
 ```
 
-
 - build
-```bash 
+
+```bash
 npm i
 npm run build
 ```
-

@@ -22,11 +22,12 @@
 </template>
 
 <script lang="ts" setup>
-    import { useStore } from "@/store";
+    import { useStore } from "@/store/market";
 
     const store = useStore();
-    await store.dispatch("market/getFruitList");
-    const fruitList = store.state.market.fruitList;
+    await store.setFruitList();
+
+    const fruitList = store.fruitList;
 </script>
 
 <style lang="scss">

@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-    import { useStore } from "@/store";
+    import { useStore } from "@/store/user";
     import { ElButton, ElCard, ElForm, ElFormItem, ElInput, ElNotification } from "element-plus";
     import { computed, defineComponent, reactive, ref } from "vue";
 
@@ -42,7 +42,7 @@
             });
             const store = useStore();
             const userInfo = computed(() => {
-                return store.state.user.userInfo;
+                return store.userInfo;
             });
             const loading = ref(false);
             const isLogin = computed(() => !!userInfo.value.token);
@@ -66,9 +66,9 @@
                 }
                 loading.value = true;
                 window.setTimeout(() => {
-                    store.commit("user/updateUser", {
+                    store.updateUser({
                         name: userName,
-                        userId: 1,
+                        userId: "1",
                         token: Math.random().toString(36).slice(-8)
                     });
                     loading.value = false;

@@ -12,8 +12,8 @@ export interface IFruitItem {
     price: number;
 }
 
-export const getFruitList = async () => {
-    const { data } = await Axios.get<IResponse<IFruitItem>>("/justTest/getFruitList");
+export const getFruitList = async (): Promise<IFruitItem[]> => {
+    const { data } = await Axios.get<IResponse<IFruitItem[]>>("http://localhost:3000/justTest/getFruitList");
     if (data.code === 0) {
         return data.data;
     }

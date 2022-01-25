@@ -1,18 +1,16 @@
 import "@/assets/css/index.css";
 import "element-plus/theme-chalk/base.css";
+import { createPinia } from "pinia";
 import { createApp } from "vue";
-import { sync } from "vuex-router-sync";
 import App from "./app.vue";
 import createRouter from "./router/";
-import createStore, { storeKey } from "./store/";
 import { isPromise } from "./utils";
 
 const router = createRouter();
-const store = createStore();
-sync(store, router);
+const store = createPinia();
 
 const app = createApp(App);
-app.use(router).use(store, storeKey);
+app.use(router).use(store);
 
 router.beforeResolve((to, from, next) => {
     let diffed = false;
@@ -55,7 +53,7 @@ router.beforeResolve((to, from, next) => {
 });
 
 if (window.__INITIAL_STATE__) {
-    store.replaceState(window.__INITIAL_STATE__);
+    store.state.value = window.__INITIAL_STATE__;
 }
 router.isReady().then(() => {
     app.mount("#app", true);
