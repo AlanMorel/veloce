@@ -2,12 +2,13 @@ import vuePlugin from "@vitejs/plugin-vue";
 import path from "path";
 import visualizer from "rollup-plugin-visualizer";
 import { UserConfig } from "vite";
+import Config from "./shared/Config";
 
 export default ({ command }: { command: string }) => {
     const config: UserConfig = {
         plugins: [vuePlugin()],
         server: {
-            port: 3000
+            port: Config.port
         },
         resolve: {
             alias: {
