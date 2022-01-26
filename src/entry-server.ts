@@ -83,10 +83,9 @@ export async function render(url: string, manifest: any) {
 
         const ctx: any = {};
 
-        let html = await renderToString(app, ctx);
-
-        const preloadLinks = renderPreloadLinks(ctx.modules, manifest);
+        const html = await renderToString(app, ctx);
         const state = JSON.stringify(store.state.value);
+        const preloadLinks = renderPreloadLinks(ctx.modules, manifest);
 
         return [html, state, preloadLinks];
     } catch (error) {

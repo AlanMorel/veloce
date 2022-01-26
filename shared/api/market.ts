@@ -13,6 +13,6 @@ export interface IFruitItem {
 }
 
 export const getFruitList = async (): Promise<IFruitItem[]> => {
-    const { data } = await Axios.get<IResponse<IFruitItem[]>>("http://localhost:3000/justTest/getFruitList");
+    const { data } = await Axios.get<IResponse<IFruitItem[]>>("http://localhost:3000/api/fruits");
     return data.data;
 };

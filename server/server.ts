@@ -1,5 +1,4 @@
 const fs = require("fs");
-const path = require("path");
 const express = require("express");
 const axios = require("axios");
 
@@ -40,7 +39,7 @@ const createServer = async (root = process.cwd(), isProd = isProduction) => {
         );
     }
 
-    app.use("/justTest/getFruitList", async (req: any, res: any) => {
+    app.use("/api/fruits", async (req: any, res: any) => {
         const names = ["Orange", "Apricot", "Apple", "Plum", "Pear", "Pome", "Banana", "Cherry", "Grapes", "Peach"];
         const list = names.map((name, id) => {
             return {

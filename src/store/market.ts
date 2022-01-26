@@ -1,4 +1,4 @@
-import { getFruitList, IFruitItem } from "@/shared/api/market";
+import { getFruitList, IFruitItem } from "@/shared/api/Market";
 import { defineStore } from "pinia";
 
 interface IMarketState {
