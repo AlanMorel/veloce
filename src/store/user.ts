@@ -6,7 +6,7 @@ interface IUser {
     token: string;
 }
 
-export interface IUserState {
+interface IUserState {
     userInfo: IUser;
 }
 

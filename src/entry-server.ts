@@ -1,9 +1,9 @@
+import App from "@/src/App.vue";
+import createRouter from "@/src/router";
+import { isPromise } from "@/src/utils";
 import { renderToString } from "@vue/server-renderer";
 import { createPinia } from "pinia";
 import { createSSRApp } from "vue";
-import App from "./app.vue";
-import createRouter from "./router";
-import { isPromise } from "./utils";
 
 function renderPreloadLinks(modules: any, manifest: any) {
     let links = "";

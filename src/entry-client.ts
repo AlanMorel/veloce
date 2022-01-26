@@ -1,14 +1,15 @@
-import "@/assets/css/index.css";
+import App from "@/src/App.vue";
+import "@/src/assets/css/index.css";
+import createRouter from "@/src/router";
+import { isPromise } from "@/src/utils";
 import { createPinia } from "pinia";
 import { createApp } from "vue";
-import App from "./app.vue";
-import createRouter from "./router/";
-import { isPromise } from "./utils";
 
 const router = createRouter();
 const store = createPinia();
 
 const app = createApp(App);
+
 app.use(router).use(store);
 
 router.beforeResolve((to, from, next) => {

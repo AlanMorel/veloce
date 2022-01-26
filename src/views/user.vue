@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-    import { useStore } from "@/store/user";
+    import { useStore } from "@/src/store/user";
     import { computed, defineComponent, reactive, ref, toRefs } from "vue";
 
     export default defineComponent({

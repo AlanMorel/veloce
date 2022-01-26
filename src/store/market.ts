@@ -1,21 +1,17 @@
-import { getFruitList, IFruitItem } from "@/api/market";
+import { getFruitList, IFruitItem } from "@/shared/api/market";
 import { defineStore } from "pinia";
 
-interface State {
+interface IMarketState {
     fruitList: IFruitItem[];
 }
 
 export const useStore = defineStore("market", {
-    state: (): State => ({
+    state: (): IMarketState => ({
         fruitList: []
     }),
     actions: {
         async setFruitList() {
-            try {
-                this.fruitList = await getFruitList();
-            } catch (error) {
-                console.log(error);
-            }
+            this.fruitList = await getFruitList();
         }
     }
 });

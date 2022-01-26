@@ -8,18 +8,18 @@ export default function () {
         routes: [
             {
                 path: "/",
-                name: "index",
-                component: () => import("@/views/index.vue")
+                name: "home",
+                component: () => import("@/src/views/Home.vue")
             },
             {
                 path: "/user",
                 name: "user",
-                component: () => import("@/views/user.vue")
+                component: () => import("@/src/views/User.vue")
             },
             {
                 path: "/market",
                 name: "market",
-                component: () => import("@/views/market.vue")
+                component: () => import("@/src/views/Market.vue")
             }
         ]
     });

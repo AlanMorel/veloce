@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-    import { useStore } from "@/store/market";
+    import { useStore } from "@/src/store/market";
 
     const store = useStore();
     await store.setFruitList();
