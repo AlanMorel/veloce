@@ -1,8 +1,5 @@
 const fs = require("fs");
 
-const isProduction = process.env.NODE_ENV === "production";
-const root = process.cwd();
-
 const setGetRoutes = (app: any, vite: any): void => {
     app.get("/api/fruits", async (req: any, res: any) => {
         const names = ["Orange", "Apricot", "Apple", "Plum", "Pear", "Pome", "Banana", "Cherry", "Grapes", "Peach"];
@@ -25,6 +22,8 @@ const setGetRoutes = (app: any, vite: any): void => {
     });
 
     app.get("*", async (req: any, res: any) => {
+        const isProduction = process.env.NODE_ENV === "production";
+        const root = process.cwd();
         const indexProd = isProduction ? fs.readFileSync(root + "/dist/client/index.html", "utf-8") : "";
         const manifest = isProduction ? require("@/dist/client/ssr-manifest.json") : {};
 

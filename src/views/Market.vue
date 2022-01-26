@@ -32,13 +32,14 @@
 
 <style lang="scss">
     .table {
-        width: 70%;
-        margin: 30px auto;
+        width: 100%;
+        max-width: 48rem;
+        margin: 2rem auto;
 
         td {
             text-align: center;
-            padding: 8px 15px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
     }
 </style>

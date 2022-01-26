@@ -40,7 +40,8 @@
     }
 
     nav {
-        width: 30rem;
+        width: 100%;
+        max-width: 30rem;
         display: flex;
         justify-content: space-between;
         margin: 0 auto;

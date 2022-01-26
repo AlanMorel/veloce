@@ -16,9 +16,9 @@
                 <span class="form__label">Password</span>
                 <input type="password" v-model="password" />
             </div>
-            <label>
+            <div class="form__button-container">
                 <button>Login</button>
-            </label>
+            </div>
         </form>
     </div>
 </template>
@@ -78,5 +78,9 @@
     .form__label {
         text-align: left;
         margin-bottom: 0.5rem;
+    }
+
+    .form__button-container {
+        text-align: right;
     }
 </style>
