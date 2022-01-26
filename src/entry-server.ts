@@ -5,26 +5,31 @@ import { renderToString } from "@vue/server-renderer";
 import { createPinia } from "pinia";
 import { createSSRApp } from "vue";
 
-function renderPreloadLinks(modules: any, manifest: any) {
+const renderPreloadLinks = (modules: any, manifest: any) => {
     let links = "";
     const seen = new Set();
 
     modules.forEach((id: any) => {
         const files = manifest[id];
 
-        if (files) {
-            files.forEach((file: any) => {
-                if (!seen.has(file)) {
-                    seen.add(file);
-                    links += renderPreloadLink(file);
-                }
-            });
+        if (!files) {
+            return;
         }
-    });
-    return links;
-}
 
-function renderPreloadLink(file: any) {
+        files.forEach((file: any) => {
+            if (seen.has(file)) {
+                return;
+            }
+
+            seen.add(file);
+            links += renderPreloadLink(file);
+        });
+    });
+
+    return links;
+};
+
+const renderPreloadLink = (file: any): string => {
     if (file.endsWith(".js")) {
         return `<link rel="modulepreload" crossorigin href="${file}">`;
     } else if (file.endsWith(".css")) {
@@ -32,9 +37,9 @@ function renderPreloadLink(file: any) {
     } else {
         return "";
     }
-}
+};
 
-export async function render(url: any, manifest: any) {
+export async function render(url: string, manifest: any) {
     const router = createRouter();
     const store = createPinia();
 
@@ -46,15 +51,19 @@ export async function render(url: any, manifest: any) {
 
     try {
         await router.isReady();
+
         const to = router.currentRoute;
         const matchedRoute = to.value.matched;
+
         if (to.value.matched.length === 0) {
             return "";
         }
+
         const matchedComponents: any[] = [];
         matchedRoute.forEach(route => {
             matchedComponents.push(...Object.values(route.components));
         });
+
         const asyncDataFuncs = matchedComponents.map(component => {
             const asyncData = component.asyncData || null;
             if (asyncData) {
@@ -69,11 +78,16 @@ export async function render(url: any, manifest: any) {
                 return asyncData(config);
             }
         });
+
         await Promise.all(asyncDataFuncs);
+
         const ctx: any = {};
+
         let html = await renderToString(app, ctx);
+
         const preloadLinks = renderPreloadLinks(ctx.modules, manifest);
         const state = JSON.stringify(store.state.value);
+
         return [html, state, preloadLinks];
     } catch (error) {
         console.log(error);

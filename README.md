@@ -1,29 +1,22 @@
-# vue3-ts-vite-ssr-starter
+# Veloce
 
 - Lightning-fast cold server start
 - Instant hot module replacement (HMR) and dev SSR
 - True on-demand compilation
-- Use `vue3 vite2.7 typescript eslint SSR pinia vue-router scss`
+- Use `Vue 3 + Vite + TypeScript + SSR + Pinia + Vue Router + Express`
 
-# Getting Started
+## Getting Started
 
-- dev
+To start development:
 
 ```bash
-npm i
-npm run dev
+yarn install
+yarn dev
 ```
 
-- preview
+To build for production:
 
 ```bash
-npm i
-npm run preview
-```
-
-- build
-
-```bash
-npm i
-npm run build
+yarn install
+yarn build
 ```

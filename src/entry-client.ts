@@ -20,16 +20,20 @@ router.beforeResolve((to, from, next) => {
     if (from && !from.name) {
         return next();
     }
+
     const activated = matched.filter((c, i) => {
         return diffed || (diffed = prevMatched[i] !== c);
     });
+
     if (!activated.length) {
         return next();
     }
+
     const matchedComponents: any = [];
     matched.forEach(route => {
         matchedComponents.push(...Object.values(route.components));
     });
+
     const asyncDataFuncs = matchedComponents.map((component: any) => {
         const asyncData = component.asyncData || null;
         if (asyncData) {
@@ -43,6 +47,7 @@ router.beforeResolve((to, from, next) => {
             return asyncData(config);
         }
     });
+
     try {
         Promise.all(asyncDataFuncs).then(() => {
             next();
@@ -55,6 +60,7 @@ router.beforeResolve((to, from, next) => {
 if (window.__INITIAL_STATE__) {
     store.state.value = window.__INITIAL_STATE__;
 }
+
 router.isReady().then(() => {
     app.mount("#app", true);
 });
