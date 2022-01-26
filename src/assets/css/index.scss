@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+}
+
+h2 {
+    padding: 0.5rem 0;
+}
+
+h3 {
+    padding: 0.5rem 0;
+}
+
+input,
+select,
+textarea,
+button {
+    appearance: none;
+    -webkit-appearance: none;
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    outline: none;
+    border: solid 1px lightgray;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    background-color: transparent;
+
+    &:focus {
+        box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25);
+        border-color: rgba(0, 0, 0, 0.25);
+    }
+}
+
+input[type="checkbox"] {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    margin: 0;
+    cursor: pointer;
+    padding: 0.625rem;
+    transition: background-color 0.15s ease;
+    border-color: rgba(0, 0, 0, 0.15);
+    width: 1.125rem;
+    height: 1.125rem;
+    box-shadow: none;
+
+    &:before {
+        font-weight: bold;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        content: "✔";
+        color: rgba(0, 0, 0, 0);
+        transform: translate(-50%, -50%);
+        transition: color 0.15s ease;
+        font-size: 0.875rem;
+    }
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.15);
+
+        &:before {
+            color: rgba(0, 0, 0, 0.25);
+        }
+    }
+
+    &:checked {
+        background-color: #35495e;
+
+        &:before {
+            color: white;
+        }
+    }
+}
+
+button {
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+}

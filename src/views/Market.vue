@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>FruitList</h2>
+        <h2>Fruits</h2>
         <table class="table">
             <thead>
                 <tr>
@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-    import { useStore } from "@/src/store/market";
+    import { useStore } from "../store/market";
 
     const store = useStore();
     await store.setFruitList();
@@ -31,10 +31,6 @@
 </script>
 
 <style lang="scss">
-    h2 {
-        padding-top: 10px;
-    }
-
     .table {
         width: 70%;
         margin: 30px auto;

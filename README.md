@@ -3,7 +3,16 @@
 - Lightning-fast cold server start
 - Instant hot module replacement (HMR) and dev SSR
 - True on-demand compilation
-- Use `Vue 3 + Vite + TypeScript + SSR + Pinia + Vue Router + Express`
+
+## Tech Stack
+
+- `Vue 3`: UI Rendering library
+- `Vite` Next-generation front-end tooling
+- `TypeScript`: Type-safety
+- `SSR`: Server-side rendering
+- `Pinia`: State management
+- `Vue Router`: Routing library
+- `Express`: Node web server
 
 ## Getting Started
 

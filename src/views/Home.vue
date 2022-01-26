@@ -1,5 +1,6 @@
 <template>
     <div class="index">
+        <h2>Home</h2>
         <input type="checkbox" v-model="isActive" />
         <p>{{ isActive ? "active" : "inactive" }}</p>
     </div>
@@ -12,10 +13,6 @@
 </script>
 
 <style lang="scss">
-    h2 {
-        padding-top: 10px;
-    }
-
     .table {
         width: 70%;
         margin: 30px auto;

@@ -1,13 +1,13 @@
 <template>
     <div class="logo">
         <img alt="Vue logo" src="./assets/images/logo.png" />
-        <h2>Veloce</h2>
-        <h3>Vue 3 + Vite + SSR + Typescript + Pinia + Vue Router + Express</h3>
-        <p>{{ time }}</p>
+        <h1>Veloce</h1>
+        <h2>Vue 3 + Vite + SSR + Typescript + Pinia + Vue Router + Express</h2>
+        <p class="time">{{ time }}</p>
     </div>
     <nav>
         <router-link :to="{ name: 'home' }">Go to Home</router-link>
-        <router-link :to="{ name: 'user' }">Go to User</router-link>
+        <router-link :to="{ name: 'login' }">Go to Login</router-link>
         <router-link :to="{ name: 'market' }">Go to Market</router-link>
     </nav>
     <hr />
@@ -36,15 +36,18 @@
     }
 
     .container {
-        padding: 10px 0;
+        padding: 1rem 0;
     }
 
     nav {
-        width: 500px;
+        width: 30rem;
         display: flex;
         justify-content: space-between;
         margin: 0 auto;
-        padding: 20px 0;
-        border-radius: 4px;
+        padding: 1.5rem 0;
+    }
+
+    .time {
+        padding: 0.5rem 0;
     }
 </style>

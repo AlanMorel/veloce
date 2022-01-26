@@ -1,6 +1,6 @@
 <template>
-    <div class="user">
-        User Page
+    <div class="login">
+        <h2>Login</h2>
         <div v-if="isLogin" class="info">
             <div class="box-card">
                 <div>User logged in</div>
@@ -8,25 +8,27 @@
             </div>
         </div>
         <form v-else class="form" @submit.prevent="submitHandle">
-            <label label="username">
+            <div class="form__section" label="username">
+                <span class="form__label">Username</span>
                 <input type="text" v-model="username" />
-            </label>
-            <label label="password">
+            </div>
+            <div class="form__section" label="password">
+                <span class="form__label">Password</span>
                 <input type="password" v-model="password" />
-            </label>
+            </div>
             <label>
-                <button>Submit</button>
+                <button>Login</button>
             </label>
         </form>
     </div>
 </template>
 
 <script lang="ts">
-    import { useStore } from "@/src/store/user";
     import { computed, defineComponent, reactive, ref, toRefs } from "vue";
+    import { useStore } from "../store/user";
 
     export default defineComponent({
-        name: "User",
+        name: "Login",
         components: {},
         setup() {
             const params = reactive({
@@ -61,12 +63,20 @@
 
 <style lang="scss">
     .form {
-        width: 450px;
-        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        max-width: 20rem;
+        margin: auto;
     }
 
-    .box-card {
-        width: 480px;
-        margin: 20px auto;
+    .form__section {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+
+    .form__label {
+        text-align: left;
+        margin-bottom: 0.5rem;
     }
 </style>

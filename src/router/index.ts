@@ -12,9 +12,9 @@ export default function () {
                 component: () => import("@/src/views/Home.vue")
             },
             {
-                path: "/user",
-                name: "user",
-                component: () => import("@/src/views/User.vue")
+                path: "/login",
+                name: "login",
+                component: () => import("@/src/views/Login.vue")
             },
             {
                 path: "/market",

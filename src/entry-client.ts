@@ -1,5 +1,5 @@
 import App from "@/src/App.vue";
-import "@/src/assets/css/index.css";
+import "@/src/assets/css/index.scss";
 import createRouter from "@/src/router";
 import { isPromise } from "@/src/utils";
 import { createPinia } from "pinia";
