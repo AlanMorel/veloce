@@ -1,12 +1,11 @@
 <template>
     <div class="index">
-        <ElSwitch v-model="isActive" active-color="#13ce66" inactive-color="#ff4949"> switch </ElSwitch>
+        <input type="checkbox" v-model="isActive" />
+        <p>{{ isActive ? "active" : "inactive" }}</p>
     </div>
 </template>
 
 <script lang="ts" setup>
-    import { ElSwitch } from "element-plus";
-    import "element-plus/theme-chalk/el-switch.css";
     import { ref } from "vue";
 
     const isActive = ref(false);

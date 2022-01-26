@@ -1,7 +1,8 @@
 <template>
     <div class="logo">
         <img alt="Vue logo" src="./assets/img/logo.png" />
-        <h3>Vue3.0 Typescript Eslint SSR Starter</h3>
+        <h2>Veloce</h2>
+        <h3>Vue 3 + Vite + SSR + Typescript + Pinia + Vue Router + Express + SASS</h3>
         <p>{{ time }}</p>
     </div>
     <nav>
@@ -21,6 +22,7 @@
 
 <script lang="ts" setup>
     import { ref } from "vue";
+
     let time = ref(new Date().toLocaleString());
 
     setInterval(() => {

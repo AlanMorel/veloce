@@ -1,5 +1,4 @@
 import "@/assets/css/index.css";
-import "element-plus/theme-chalk/base.css";
 import { createPinia } from "pinia";
 import { createApp } from "vue";
 import App from "./app.vue";

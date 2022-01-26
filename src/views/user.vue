@@ -2,42 +2,35 @@
     <div class="user">
         User Page
         <div v-if="isLogin" class="info">
-            <el-card class="box-card">
+            <div class="box-card">
                 <div>User logged in</div>
                 <div>Username: {{ userInfo.name }}</div>
-            </el-card>
+            </div>
         </div>
-        <el-form v-else class="form">
-            <el-form-item label="UserName">
-                <el-input v-model="params.userName" />
-            </el-form-item>
-            <el-form-item label="Password">
-                <el-input v-model="params.password" type="password" />
-            </el-form-item>
-            <el-form-item>
-                <el-button :loading="loading" type="success" @click="submitHandle"> Submit </el-button>
-            </el-form-item>
-        </el-form>
+        <form v-else class="form" @submit.prevent="submitHandle">
+            <label label="username">
+                <input type="text" v-model="username" />
+            </label>
+            <label label="password">
+                <input type="password" v-model="password" />
+            </label>
+            <label>
+                <button>Submit</button>
+            </label>
+        </form>
     </div>
 </template>
 
 <script lang="ts">
     import { useStore } from "@/store/user";
-    import { ElButton, ElCard, ElForm, ElFormItem, ElInput, ElNotification } from "element-plus";
-    import { computed, defineComponent, reactive, ref } from "vue";
+    import { computed, defineComponent, reactive, ref, toRefs } from "vue";
 
     export default defineComponent({
         name: "User",
-        components: {
-            ElCard,
-            ElForm,
-            ElButton,
-            ElFormItem,
-            ElInput
-        },
+        components: {},
         setup() {
             const params = reactive({
-                userName: "",
+                username: "",
                 password: ""
             });
             const store = useStore();
@@ -47,34 +40,21 @@
             const loading = ref(false);
             const isLogin = computed(() => !!userInfo.value.token);
             const submitHandle = () => {
-                const { userName, password } = params;
-                if (!userName) {
-                    ElNotification({
-                        type: "error",
-                        title: "Error",
-                        message: "Username is required"
-                    });
+                const { username, password } = params;
+
+                if (!username || !password) {
                     return;
                 }
-                if (!password) {
-                    ElNotification({
-                        type: "error",
-                        title: "Error",
-                        message: "Password is required"
-                    });
-                    return;
-                }
+
                 loading.value = true;
-                window.setTimeout(() => {
-                    store.updateUser({
-                        name: userName,
-                        userId: "1",
-                        token: Math.random().toString(36).slice(-8)
-                    });
-                    loading.value = false;
-                }, 1500);
+                store.updateUser({
+                    name: username,
+                    userId: "1",
+                    token: Math.random().toString(36).slice(-8)
+                });
+                loading.value = false;
             };
-            return { params, loading, submitHandle, userInfo, isLogin };
+            return { ...toRefs(params), loading, submitHandle, userInfo, isLogin };
         }
     });
 </script>
