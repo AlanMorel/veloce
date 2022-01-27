@@ -1,12 +1,16 @@
 const fs = require("fs");
 
+const root = process.cwd();
+const isProduction = process.env.NODE_ENV === "production";
+const manifest = isProduction ? require(root + "/dist/client/ssr-manifest.json") : {};
+
 const setGetRoutes = (app: any, vite: any): void => {
     app.get("/api/fruits", async (req: any, res: any) => {
         const names = ["Orange", "Apricot", "Apple", "Plum", "Pear", "Pome", "Banana", "Cherry", "Grapes", "Peach"];
 
-        const list = names.map((name, id) => {
+        const list = names.map((name: string, id: number) => {
             return {
-                id: ++id,
+                id: id + 1,
                 name,
                 price: Math.ceil(Math.random() * 100)
             };
@@ -22,10 +26,6 @@ const setGetRoutes = (app: any, vite: any): void => {
     });
 
     app.get("*", async (req: any, res: any) => {
-        const root = process.cwd();
-        const isProduction = process.env.NODE_ENV === "production";
-        const manifest = isProduction ? require(root + "/dist/client/ssr-manifest.json") : {};
-
         const url = req.originalUrl;
 
         try {

@@ -12,14 +12,14 @@ const app = createApp(App);
 
 app.use(router).use(store);
 
-router.beforeResolve((to, from, next) => {
-    let diffed = false;
-    const matched = router.resolve(to).matched;
-    const prevMatched = router.resolve(from).matched;
-
+router.beforeResolve(async (to, from, next) => {
     if (from && !from.name) {
         return next();
     }
+
+    let diffed = false;
+    const matched = router.resolve(to).matched;
+    const prevMatched = router.resolve(from).matched;
 
     const activated = matched.filter((c, i) => {
         return diffed || (diffed = prevMatched[i] !== c);
@@ -35,21 +35,26 @@ router.beforeResolve((to, from, next) => {
     });
 
     const asyncDataFuncs = matchedComponents.map((component: any) => {
-        const asyncData = component.asyncData || null;
-        if (asyncData) {
-            const config = {
-                store,
-                route: to
-            };
-            if (!isPromise(asyncData)) {
-                return Promise.resolve(asyncData(config));
-            }
-            return asyncData(config);
+        const asyncData = component.asyncData;
+
+        if (!asyncData) {
+            return;
         }
+
+        const config = {
+            store,
+            route: to
+        };
+
+        if (!isPromise(asyncData)) {
+            return Promise.resolve(asyncData(config));
+        }
+
+        return asyncData(config);
     });
 
     try {
-        Promise.all(asyncDataFuncs).then(() => {
+        await Promise.all(asyncDataFuncs).then(() => {
             next();
         });
     } catch (err) {

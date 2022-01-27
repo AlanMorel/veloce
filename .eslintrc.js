@@ -2,14 +2,12 @@ module.exports = {
     root: true,
     env: {
         node: true,
-        es2021: true,
-        jest: true
+        es2021: true
     },
     globals: {
         page: true,
         browser: true,
-        context: true,
-        jestPuppeteer: true
+        context: true
     },
     parser: "@typescript-eslint/parser",
     plugins: ["@typescript-eslint", "security", "prettier"],
