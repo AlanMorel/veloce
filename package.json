@@ -12,7 +12,8 @@
         "dev": "nodemon --config ./nodemon.config.json ./server/Server.ts --watch",
         "build": "yarn run build:client && yarn run build:server",
         "build:client": "vite build --ssrManifest --outDir ./dist/client",
-        "build:server": "vite build --ssr ./src/entry-server.ts --outDir ./dist/server"
+        "build:server": "vite build --ssr ./src/entry-server.ts --outDir ./dist/server",
+        "serve": "cross-env NODE_ENV=production ts-node ./server/Server.ts"
     },
     "dependencies": {
         "axios": "^0.25.0",
@@ -34,10 +35,10 @@
         "@vue/compiler-sfc": "^3.2.29",
         "@vue/server-renderer": "^3.2.29",
         "compression": "^1.7.4",
+        "cross-env": "^7.0.3",
         "eslint": "^8.7.0",
-        "eslint-plugin-vue": "^8.3.0",
+        "eslint-plugin-vue": "^8.4.0",
         "express": "^4.17.2",
-        "rollup-plugin-visualizer": "^5.5.4",
         "sass": "^1.49.0",
         "typescript": "^4.5.5",
         "vite": "^2.7.13",

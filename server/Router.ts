@@ -22,10 +22,9 @@ const setGetRoutes = (app: any, vite: any): void => {
     });
 
     app.get("*", async (req: any, res: any) => {
-        const isProduction = process.env.NODE_ENV === "production";
         const root = process.cwd();
-        const indexProd = isProduction ? fs.readFileSync(root + "/dist/client/index.html", "utf-8") : "";
-        const manifest = isProduction ? require("@/dist/client/ssr-manifest.json") : {};
+        const isProduction = process.env.NODE_ENV === "production";
+        const manifest = isProduction ? require(root + "/dist/client/ssr-manifest.json") : {};
 
         const url = req.originalUrl;
 
@@ -33,12 +32,12 @@ const setGetRoutes = (app: any, vite: any): void => {
             let template, render;
 
             if (!isProduction) {
-                template = fs.readFileSync(root + "/server/index.html", "utf-8");
+                template = fs.readFileSync(root + "/index.html", "utf-8");
                 template = await vite.transformIndexHtml(url, template);
-                render = (await vite.ssrLoadModule("@/src/entry-server.ts")).render;
+                render = (await vite.ssrLoadModule(root + "/src/entry-server.ts")).render;
             } else {
-                template = indexProd;
-                render = require("@/dist/server/entry-server.ts").render;
+                template = fs.readFileSync(root + "/dist/client/index.html", "utf-8");
+                render = require(root + "/dist/server/entry-server.js").render;
             }
 
             const [appHtml, state, links] = await render(url, manifest);
@@ -50,7 +49,9 @@ const setGetRoutes = (app: any, vite: any): void => {
 
             res.status(200).set({ "Content-Type": "text/html" }).end(html);
         } catch (e: any) {
-            vite.ssrFixStacktrace(e);
+            if (vite) {
+                vite.ssrFixStacktrace(e);
+            }
             console.log(e.stack);
             res.status(500).end(e.stack);
         }
