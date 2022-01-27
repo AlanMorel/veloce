@@ -1,13 +1,12 @@
 import vuePlugin from "@vitejs/plugin-vue";
 import path from "path";
 import { UserConfig } from "vite";
-import Config from "./shared/Config";
 
 export default () => {
     const config: UserConfig = {
         plugins: [vuePlugin()],
         server: {
-            port: Config.port
+            port: 3000
         },
         resolve: {
             alias: {

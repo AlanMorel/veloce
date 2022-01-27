@@ -16,16 +16,30 @@
 
 ## Getting Started
 
-To start development:
+First, install all dependencies:
 
 ```bash
 yarn install
+```
+
+Then, create a `.env` file:
+
+```bash
+NODE_ENV=development
+PORT=3000
+
+VITE_PORT=3000
+VITE_BASE=http://localhost:3000
+```
+
+To start development:
+
+```bash
 yarn dev
 ```
 
 To build for production:
 
 ```bash
-yarn install
 yarn build
 ```

@@ -1,4 +1,5 @@
 import Axios from "axios";
+import Config from "../Config";
 
 interface IResponse<T> {
     code: number;
@@ -13,6 +14,6 @@ export interface IFruitItem {
 }
 
 export const getFruitList = async (): Promise<IFruitItem[]> => {
-    const { data } = await Axios.get<IResponse<IFruitItem[]>>("http://localhost:3000/api/fruits");
+    const { data } = await Axios.get<IResponse<IFruitItem[]>>(Config.base + "/api/fruits");
     return data.data;
 };

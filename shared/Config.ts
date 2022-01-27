@@ -1,11 +1,17 @@
 import dotenv from "dotenv";
 
-dotenv.config();
+let port, base;
 
-const port = parseInt(process.env.PORT || "3000");
-const origin = process.env.ORIGIN || `http://localhost:${port}`;
+if (import.meta.env.SSR) {
+    dotenv.config();
+    port = parseInt(process.env.PORT || "3000");
+    base = `http://localhost:${port}`;
+} else {
+    port = parseInt(import.meta.env.VITE_PORT?.toString() || "3000");
+    base = import.meta.env.VITE_BASE || `http://localhost:${port}`;
+}
 
 export default {
     port,
-    origin
+    base
 };
