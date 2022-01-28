@@ -2,7 +2,7 @@
     <div class="logo">
         <img alt="Vue logo" src="./assets/images/logo.png" />
         <h1>Veloce</h1>
-        <h2>Vue 3 + Vite + SSR + Typescript + Pinia + Vue Router + Express</h2>
+        <h2>Vue 3 + Vite + SSR + Typescript + Pinia + Vue Router + Express + Docker</h2>
         <p class="time">{{ time }}</p>
     </div>
     <nav>

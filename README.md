@@ -13,6 +13,7 @@
 - `Pinia`: State management
 - `Vue Router`: Routing library
 - `Express`: Node web server
+- `Docker`: Containerization
 
 ## Getting Started
 
@@ -42,4 +43,10 @@ To build for production:
 
 ```bash
 yarn build
+```
+
+To containerize using Docker:
+
+```bash
+docker compose up
 ```
