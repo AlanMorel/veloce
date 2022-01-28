@@ -16,8 +16,12 @@
         "serve": "cross-env NODE_ENV=production node ./dist/server/Server.js"
     },
     "dependencies": {
+        "@vitejs/plugin-vue": "^2.1.0",
         "axios": "^0.25.0",
+        "cross-env": "^7.0.3",
+        "compression": "^1.7.4",
         "dotenv": "^14.3.2",
+        "express": "^4.17.2",
         "nodemon": "^2.0.15",
         "pinia": "^2.0.10",
         "ts-node": "^10.4.0",
@@ -33,14 +37,10 @@
         "@types/node": "^17.0.12",
         "@typescript-eslint/eslint-plugin": "^5.10.1",
         "@typescript-eslint/parser": "^5.10.1",
-        "@vitejs/plugin-vue": "^2.1.0",
         "@vue/compiler-sfc": "^3.2.29",
         "@vue/server-renderer": "^3.2.29",
-        "compression": "^1.7.4",
-        "cross-env": "^7.0.3",
         "eslint": "^8.7.0",
         "eslint-plugin-vue": "^8.4.0",
-        "express": "^4.17.2",
         "sass": "^1.49.0",
         "typescript": "^4.5.5",
         "vue-eslint-parser": "^8.2.0"
